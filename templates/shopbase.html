@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloth-Center</title>
+    <link href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ionicons.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+
+    
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+        function getToken(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        // aikhane cookie neya kaj hoise jara login thakbe na tara
+        var csrftoken = getToken('csrftoken');
+        //console.log('CSRFTOKEN:', csrftoken)
+
+        function getCookie(name){
+            var cookieArr = document.cookie.split(";");
+            for(var i = 0; i< cookieArr.length; i++){
+                var cookiePair = cookieArr[i].split('=');
+
+                if(name == cookiePair[0].trim()){
+                    return decodeURIComponent(cookiePair[i]);
+                }
+            }
+            return null;
+        }
+        var cart = JSON.parse(getCookie('cart'))
+        if(cart == undefined){
+            cart = {}
+            console.log('cart created')
+            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+        }
+        console.log('cart:', cart)
+    </script>
+
+</head>
+
+<body class="goto-here">
+
+    <!--top bar-->
+    {% include 'partials/topbar.html' %}
+ 
+    <!--nav bar-->
+    {% include 'partials/navbar.html' %}
+ 
+ 
+  <!-- body part of shop pages all-->
+
+
+  {% block content %}
+
+  {% endblock %}
+     <!--footer part -->
+     {% include 'partials/footer.html' %}
+
+
+     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+     <script src="{% static 'js/jquery.min.js' %}"></script>
+     <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+     <script src="{% static 'js/popper.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+     <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+     <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+     <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+     <script src="{% static 'js/aos.js' %}"></script>
+     <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+     <script src="{% static 'js/scrollax.min.js' %}"></script>
+   
+    
+     <script src="{% static 'js/main.js' %}"></script>   
+     <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>   
+     
+ </body>
+ </html>

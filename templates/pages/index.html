@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+    <!--first content a throgh moder women and men SLIDER part-->
+    {% include 'partials/firstcontent.html' %}
+
+
+    <!--best selling products show here -->
+    {% include 'partials/bestseller.html' %}
+
+
+    <!--3rd comntent men/women pic and just design part-->
+    {% include 'partials/_3rdcontent.html' %}
+
+    <!--some products in home page -->
+ <br>
+
+
+    <!--customer say what that part is here-->
+    {% include 'partials/customer.html' %}
+
+{% endblock content %}
